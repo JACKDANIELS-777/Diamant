@@ -8,8 +8,12 @@ a=10
 funk a()->7
 as 
 if
+drukf
+
+
+^
 """
 
 tokens = lexer.tokenize(test_String)
 for token in tokens:
-	print(f"Value: {token.value} and Type:{token.type}")
+	print(f"Value: {token.value} and Type:{token.type} {token}")

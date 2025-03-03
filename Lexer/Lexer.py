@@ -1,6 +1,7 @@
 from sly import Lexer
 
 class DiamantLexer(Lexer):
+    lineno=0
     tokens = {PRINTF, IMPORT, TK, PRINT, NAME, NUMBER, STRING, TRUE, FALSE, IF, THEN, ELSE, FOR, FUN, TO, RET, ARROW, EQEQ}
     ignore = '\t '
 
@@ -28,6 +29,10 @@ class DiamantLexer(Lexer):
     def NUMBER(self, t):
         t.value = int(t.value)
         return t
+    @_(r'/\*.*?\*/')
+    def block_comment(self, t):
+        pass  # Ignore block comments
+
 
     @_(r'#.*')
     def COMMENT(self, t):
@@ -35,4 +40,8 @@ class DiamantLexer(Lexer):
 
     @_(r'\n+')
     def newline(self, t):
-        self.lineno = t.value.count('\n')
+        self.lineno += t.value.count('\n')
+    
+    def error(self, t):
+        print(f"Illegal character '{t.value[0]}' at line {self.lineno}")
+        self.index += 1  # Skip the illegal character and continue lexing
