@@ -5,7 +5,9 @@ from Lexer import  DiamantLexer
 lexer = DiamantLexer()
 test_String = """
 a=10
-fun a()->7
+funk a()->7
+as 
+if
 """
 
 tokens = lexer.tokenize(test_String)
