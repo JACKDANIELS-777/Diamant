@@ -2,7 +2,7 @@
 import io
 from sly import Lexer, Parser
 import os
-
+import sys 	
 
 import inspect
 
@@ -96,9 +96,8 @@ class BasicParser(Parser):
         pass
 
 
-    @_('FOR var_assign TO expr THEN "{" statement_list "}"')
+    @_('FOR var_assign TO expr THEN statement_list')
     def statement(self, p):
-       
         return ('for_loop', ('for_loop_setup', p.var_assign, p.expr), p.statement_list)
 
 
@@ -123,21 +122,13 @@ class BasicParser(Parser):
         return ('fun_def_args', p.NAME,p.args, p.statement_list)
 
     @_('NAME')
-    def expr(self, p):
-        
-        return ('var', p.NAME)
-
-
-    @_('"." NAME')
     def args(self,p):
-        
+
         return [p.NAME]
 
-    @_('args "," "." NAME')
+    @_('args "," NAME')
     def args(self,p):
-        
         return p.args + [p.NAME]
-
     @_('NAME "(" ")"')
     def expr(self, p):
         return ('fun_call', p.NAME)
@@ -168,12 +159,10 @@ class BasicParser(Parser):
 
     @_('var_assign')
     def statement(self, p):
-        
         return p.var_assign
 
     @_('NAME "=" expr')
     def var_assign(self, p):
-        
         return ('var_assign', p.NAME, p.expr)
 
     @_('NAME "=" STRING')
@@ -186,17 +175,17 @@ class BasicParser(Parser):
 
     @_('expr')
     def statement(self, p):
-        
         return (p.expr)
 
 
-    
+    @_('NAME')
+    def expr(self, p):
+        return ('var', p.NAME)
 
 
 
     @_('NUMBER')
     def expr(self, p):
-        
         return ('num', p.NUMBER)
 
     @_('STRING')
@@ -419,7 +408,6 @@ class BasicExecute:
 
 
         if node[0] == 'num':
-            print(node[1])
             return node[1]
         if node[0] == 'str':
             return node[1][1:-1]  # Strip quote
@@ -582,11 +570,10 @@ class BasicExecute:
 
         if node[0]=='fun_def_args':
             #a:0 etc
-            self.temp_env[node[1]]={key : 0 for key in node[2] if key!=node[1]}
-            
+            self.temp_env[node[1]]={key : 0 for key in node[2]}
+
             self.env[node[1]]=node[3]
             return 0
-
         if node[0] == 'fun_call':
             for i in self.env[node[1]]:
                 try:
@@ -603,10 +590,9 @@ class BasicExecute:
             if node[1]=="open":
                 file = (self.walkTree(node[2][0]))
                 return open(f"{file}","r")
-            
-            
+
             for i,v in enumerate(self.temp_env[node[1]]):
-                
+
                 self.temp_env[node[1]][v]=self.walkTree(node[2][i])
 
             t=self.env
@@ -620,9 +606,7 @@ class BasicExecute:
                     if(i[0]=="RET"):
                         temp = self.walkTree(i)
                         break
-                    
-                    
-                    #BasicExecute(i, env, Func, {})
+
                     temp=self.walkTree(i)
                 except LookupError:
                     print("Undefined function '%s'" % node[1])
@@ -807,14 +791,14 @@ if __name__ == '__main__':
             # Use the multiline input function
         #text = multiline_input('basic > ')
             # Reading file contents line-by-line
-            with open("r.txt", "r") as file:
+            with open(sys.argv[1], "r") as file:
                 lines = file.readlines()  # Reads all lines as a list of strings
             code = "".join(lines)
             print("*")
             os.system("cls")
 
             for l in code.split(";"):
-                
+
                 tree = parser.parse(lexer.tokenize(l))
 
                 BasicExecute(tree, env, Func, temp_env)
