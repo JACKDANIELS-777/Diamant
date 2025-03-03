@@ -1,0 +1,234 @@
+**************************
+Expressions (expr)
+**************************
+- String: A sequence of characters, e.g., "Hello, world!"
+- Number (int): An integer value, e.g., 5, 42
+- Variable (Name): A variable that holds a value, e.g., a, x, total
+- Operations:
+  - Name += expr (e.g., a += 7)
+  - expr + expr, expr - expr, expr * expr, expr / expr
+- Function Call:
+  - Name()
+  - Name(print_args)
+- List Access: Accessing a list element at a specific index:
+  - Name[Number] (e.g., a[0])
+- Dictionary Access: Accessing a dictionary key-value pair:
+  - Name{Name} (e.g., a["key"])
+
+**************************
+Arguments (args)
+**************************
+- Name: A single variable
+- args: Multiple arguments, separated by commas
+
+**************************
+Statements (Statements)
+**************************
+1. Variable Assignment:
+   - Name = expr (e.g., a = 5)
+   - Name = list (e.g., a = [1, 2, 3])
+   - Name = dict (e.g., a = {"key": "value"})
+   - Name = condition (e.g., a = x > 5)
+
+2. Function Definition:
+   - fun Name() -> statement_list (A function with no arguments)
+   - fun Name(args) -> statement_list (A function with arguments)
+
+3. Control Flow Statements:
+   - If Statement:
+     - if (condition) { statement_list }
+     - if condition then statement_list else statement_list
+   - For Loop:
+     - for var_assign to expr then statement_list
+
+4. Print Statements:
+   - printf(print_args) (Formatted print)
+   - print(print_args) (Simple print)
+
+5. Return expr
+    -ret expr
+    -returns early from a if or function
+    - returns the expr
+**************************
+Statement List (Statement List)
+**************************
+- A list of individual statements separated by commas:
+  - statement, statement, statement
+
+**************************
+Variable Assignment (var_assign)
+**************************
+- Name = expr
+- Name = list
+- Name = dict
+- Name = condition
+
+**************************
+Print Arguments (print_args)
+**************************
+- expr: Any expression, such as a variable, value, or function result
+- dict: A dictionary to be printed
+- list: A list to be printed
+- Multiple arguments: A comma-separated list of expressions:
+  - print_args, expr
+
+**************************
+Elements
+**************************
+- expr: An expression, such as a variable or operation
+- elements, expr: A list of expressions separated by commas
+
+**************************
+Lists (List)
+**************************
+- List syntax: [ elements ] (e.g., [1, 2, 3])
+
+**************************
+Conditions (Condition)
+**************************
+- Condition syntax: expr == expr
+  - Example: x > 5
+  - Conditions are used in if statements and loops
+
+**************************
+Variables
+**************************
+- int: Integer values, e.g., 5, 42
+- string: String values, e.g., "Hello"
+- list: A list of values, e.g., [1, 2, 3]
+- dict: A dictionary of key-value pairs, e.g., {"key": "value"}
+- function call/return: A function can be called and its result can be stored in a variable
+
+**************************
+Example Code
+**************************
+fun add_numbers(a, b) ->
+    result = a + b
+    return result;
+
+
+x = 5;
+y = 10;
+z = add_numbers(x, y);
+
+if z == 15 then
+    print("Sum is correct")
+ else
+    print("Something went wrong");
+
+
+**************************
+Notes
+**************************
+- Operations can be performed on both integers and strings (concatenation for strings, arithmetic for numbers)
+- Function definitions use the "fun" keyword and can have parameters
+- Control flow includes if statements and loops (for)
+- Data types include integers, strings, lists, and dictionaries
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**************************
+expr
+**************************
+String
+Number (int)
+
+Name = variables
+Name += (/,*,-) expr
+Name . Name ( print_args ) is an expr
+Name list ie (a[0]) is an expr {example a[0] + 7};
+Name ( print_args)
+Name ()
+expr (+,-,*,/) expr is an expr
+
+**************************
+args
+**************************
+Name
+args
+
+
+*************************
+Statements
+**************************
+Name { Name } = expr ie a{"a"} = 7 {a:7} dict key_value change
+Name [ Number ] = expr ie a[0] = 7  list_index value change
+Name ( Number) = String ie a[0] = "a" string_index value change
+
+Name += (/,*,-) expr    a+=7
+
+fun Name () -> statement_list
+fun Name (args) -> statement_list
+if "(" condition ")" "{" statement_list "}
+if condition then statement_list else statement_list
+for var_assign to expr then statement_list
+
+
+printf ( print_args )
+print ( print_args )
+var_assign
+
+**************************
+Statement List
+**************************
+statement
+statement_list , statment
+
+**************************
+var assign
+**************************
+Name = expr
+Name = list
+Name = dict
+Name = condition
+
+**************************
+print_args
+**************************
+dict
+list
+expr
+print_args , expr
+
+**************************
+elements
+**************************
+expr
+elements , expr
+
+**************************
+List
+**************************
+[ elements ]
+
+**************************
+condtion
+**************************
+expr == expr
+
+**************************
+variables
+**************************
+int
+string
+list
+dict
+function call / return
+*********
+*****************
+
+
+evaluates from left to right so 1==7==7 becomes 1==1 then 1 so 1==(7==) essentially

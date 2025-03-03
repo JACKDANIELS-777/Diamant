@@ -1,0 +1,37 @@
+#a = [1,0,1,9,"hey",100-1+99];
+#for i=0 to a.Len([99]) then print(a[i]);
+#a = {a:9,b:99};
+#b = a;
+#fun a(a)->
+#if (a==10){printf("{a} is the goat"), 8, 77}, print(8), 999;
+#--a(10);
+#a = [0,[100,[99,100-10]]];
+#b = a[1];
+#c=b[1];
+#print(c[1]-100);
+
+#fun a(a)-> ret [a[0],a];
+#b = a([1]);
+#print(b[0])
+#fun a(a)-> if a[0] == 1 then ret a[0] else 0;
+#a([0,999]);
+
+
+#a = concat_lists([1, 2], [3, 4]) ; # Output: [1, 2, 3, 4]
+#print(a[2]);
+
+
+#b = [1,0]-1+1-0-0+1+99;
+#printf("{b} is b");
+#if True==1==7==7 then 1 else 0;
+#a = open("r.txt");
+#b=a;
+#print(b.str(["name"]));
+#for j = 0 to 1 then {j} fix 
+fun adds(.lst)->
+   for j = 0 to 1 then {b=j+1};
+
+
+#l = adds(0,i);
+l=1+1;
+b = l+1;
