@@ -43,5 +43,6 @@ class DiamantLexer(Lexer):
         self.lineno += t.value.count('\n')
     
     def error(self, t):
+        
         print(f"Illegal character '{t.value[0]}' at line {self.lineno}")
         self.index += 1  # Skip the illegal character and continue lexing
