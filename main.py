@@ -1,7 +1,10 @@
 
 import os
-
+import io
 from Lexer.Lexer import DiamantLexer
+from Parser.Parser import DiamantParser
+from ParseTree.ParseTree import DiamantExecute
+import sys	
 if __name__ == '__main__':
     lexer = DiamantLexer()
     parser = DiamantParser()
@@ -14,7 +17,7 @@ if __name__ == '__main__':
             # Use the multiline input function
         #text = multiline_input('basic > ')
             # Reading file contents line-by-line
-            with open("r.txt", "r") as file:
+            with open(sys.argv[1], "r") as file:
                 lines = file.readlines()  # Reads all lines as a list of strings
             code = "".join(lines)
             print("*")
@@ -24,7 +27,7 @@ if __name__ == '__main__':
                 
                 tree = parser.parse(lexer.tokenize(l))
 
-                BasicExecute(tree, env, Func, temp_env)
+                DiamantExecute(tree, env, Func, temp_env)
 
                 i+=1
         except EOFError:

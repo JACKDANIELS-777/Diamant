@@ -1,0 +1,40 @@
+@_('IMPORT NAME')
+    def statement(self, p):
+        module_name = p.NAME
+        if module_name in self.modules:
+            print(f"Module '{module_name}' already imported.")
+            return
+
+        module_code=self.load_module(module_name)
+        return ('import', module_name,module_code)
+
+
+def load_module(self, module_name):
+        try:
+            # Open the module file
+            with open(f"{module_name}.txt", 'r') as file:
+                lines = file.readlines()
+
+            # Prepare a list of code lines
+            module_code = [line.strip() for line in lines if line.strip()]
+
+            # Initialize a new environment for this module
+            module_env = {}
+
+
+
+            # Store the module functions in the modules dictionary
+            self.modules[module_name] = module_env
+            return module_code
+        except FileNotFoundError:
+            print(f"Module '{module_name}' not found.")
+        except Exception as e:
+            print(f"Error loading module '{module_name}': {e}")
+
+
+
+
+
+
+
+
