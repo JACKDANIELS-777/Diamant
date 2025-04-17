@@ -214,30 +214,30 @@
     <div class="line"></div>
   </div>
 
-  <script>
-    const navLinks = document.querySelectorAll('nav ul li a');
+ <script>
+        const navLinks = document.querySelectorAll('nav a');
 
-    navLinks.forEach(link => {
-      link.addEventListener('mouseover', () => {
-        const cursors = ['pointer', 'crosshair', 'grab', 'grabbing', 'zoom-in', 'zoom-out'];
-        const randomCursor = cursors[Math.floor(Math.random() * cursors.length)];
-        document.body.style.cursor = randomCursor;
-      });
+        navLinks.forEach(link => {
+            link.addEventListener('mouseover', () => {
+                const colors = ['#00bcd4', '#ff4081', '#c6ff00', '#f50057'];
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                link.style.cursor = 'pointer';
+                link.style.color = randomColor;
+            });
 
-      link.addEventListener('mouseout', () => {
-        document.body.style.cursor = 'default';
-      });
-    });
+            link.addEventListener('mouseout', () => {
+                link.style.color = '#fff';
+            });
+        });
+        function updateDate() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' };
+            const formattedDate = now.toLocaleDateString(undefined, options);
+            document.getElementById('date').textContent = formattedDate;
+        }
 
-    function updateDate() {
-      const now = new Date();
-      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' };
-      const formattedDate = now.toLocaleDateString('en-US', options);
-      document.getElementById('date').textContent = formattedDate;
-    }
-
-    setInterval(updateDate, 1000);
-    updateDate();
-  </script>
+        setInterval(updateDate, 1000);
+        updateDate();
+    </script>
 </body>
 </html>
