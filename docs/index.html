@@ -1,109 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Diamant Programming Language</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f8f8;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diamond Compilers</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #333, #555, #777);
+      background-size: 400% 400%;
+      animation: gradientAnimation 15s ease infinite;
+      color: #fff;
+      overflow: hidden; /* Hide scrollbars */
+    }
 
-        header {
-            background-color: #4A90E2;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
+    @keyframes gradientAnimation {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
 
-        nav {
-            background-color: #333;
-            color: white;
-            padding: 10px;
-            text-align: center;
-        }
+    .container {
+      border: 2px solid #888;
+      box-sizing: border-box;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 15px;
-            margin: 0 10px;
-            display: inline-block;
-        }
+    header {
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
 
-        nav a:hover {
-            background-color: #555;
-        }
+    nav {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+      text-align: center;
+      border-bottom: 1px solid #555;
+    }
 
-        .container {
-            width: 80%;
-            margin: 0 auto;
-            padding: 20px;
-        }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: inline-block;
+    }
 
-        h1, h2 {
-            color: #333;
-        }
+    nav ul li {
+      display: inline-block;
+      margin: 0 15px;
+      position: relative;
+    }
 
-        p {
-            line-height: 1.6;
-            color: #555;
-        }
+    nav ul li a {
+      text-decoration: none;
+      color: #eee;
+      font-weight: bold;
+      font-size: 1.1em;
+      padding: 5px 10px;
+      display: block;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
 
-        .prototype {
-            background-color: #f1f1f1;
-            border: 1px solid #ddd;
-            padding: 20px;
-            margin-top: 20px;
-        }
+    nav ul li a:hover {
+      color: #fff;
+      transform: scale(1.1);
+      text-shadow: 0 0 5px #fff;
+    }
 
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-    </style>
+    nav ul li a::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #fff;
+      visibility: hidden;
+      transform: scaleX(0);
+      transition: all 0.3s ease-in-out 0s;
+    }
+
+    nav ul li a:hover::before {
+      visibility: visible;
+      transform: scaleX(1);
+    }
+
+    main {
+      padding: 20px;
+      flex: 1;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: rgba(0, 0, 0, 0.5);
+      font-size: 0.8em;
+      border-top: 1px solid #555;
+    }
+
+    #date {
+      margin-top: 10px;
+      font-style: italic;
+    }
+
+    #border-animation {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .line {
+      position: absolute;
+      background-color: #00ffff;
+      box-shadow: 0 0 10px #00ffff;
+      animation: borderAnimation 8s linear infinite;
+    }
+    .line {
+      position: absolute;
+      background: linear-gradient(to right, rgba(0, 255, 255, 0), #00ffff);
+      box-shadow: 0 0 10px #00ffff;
+      animation: borderAnimation 8s linear infinite;
+    }
+
+    @keyframes borderAnimation {
+      0% {
+        left: 0;
+        top: 0;
+        width: 0;
+        height: 2px;
+      }
+      25% {
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 2px;
+      }
+      26% {
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 2px;
+      }
+      50% {
+        left: calc(100% - 2px);
+        top: 0;
+        width: 2px;
+        height: 0;
+      }
+      75% {
+        left: calc(100% - 2px);
+        top: 0;
+        width: 2px;
+        height: 100%;
+      }
+      76% {
+        left: calc(100% - 2px);
+        top: calc(100% - 2px);
+        width: 2px;
+        height: 100%;
+      }
+      100% {
+        left: 0;
+        top: calc(100% - 2px);
+        width: 0;
+        height: 2px;
+      }
+    }
+
+
+  </style>
 </head>
 <body>
-
+  <div class="container">
     <header>
-        <h1>Diamant Programming Language</h1>
-        <p>A new, innovative language for the future.</p>
+      <h1>Welcome to Diamond Compilers</h1>
     </header>
 
     <nav>
-        <a href="#">Home</a>
-        <a href="#">Prototype</a>
-        <a href="#">What's Next</a>
-        <a href="#">Docs</a>
-        <a href="#">Installation</a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
     </nav>
 
-    <div class="container">
-        <h2>Prototype Interpreter</h2>
-        <p>Welcome to the prototype interpreter for Diamant, a new programming language that’s still in its early development stages. Our goal is to create a powerful and user-friendly language for developers that combines simplicity with flexibility. Will be available in Afrikaans.</p>
-
-        <div class="prototype">
-            <h3>Current Status</h3>
-            <p>As of 2025/03/18. Diamant is still in its super early development stages. The interpreter is functional but only supports a few basic features. There’s a lot more to come!</p>
-        </div>
-
-        <h2>What's Next?</h2>
-        <p>In the near future, we’ll be adding more features and improving the interpreter to handle more complex programs. Stay tuned for updates!</p>
-        <p>As in executable file that takes in args etc.</p>
-    </div>
+    <main>
+      <p>Your premier source for compiler solutions.</p>
+      <p id="welcome-msg">Welcome user as of <span id="date"></span> we are still under development.</p>
+    </main>
 
     <footer>
-        <p>2025 Diamant Language Development. All rights reserved.</p>
+      <p>MIT License</p>
     </footer>
+  </div>
 
+  <div id="border-animation">
+    <div class="line"></div>
+  </div>
+
+  <script>
+    const navLinks = document.querySelectorAll('nav ul li a');
+
+    navLinks.forEach(link => {
+      link.addEventListener('mouseover', () => {
+        const cursors = ['pointer', 'crosshair', 'grab', 'grabbing', 'zoom-in', 'zoom-out'];
+        const randomCursor = cursors[Math.floor(Math.random() * cursors.length)];
+        document.body.style.cursor = randomCursor;
+      });
+
+      link.addEventListener('mouseout', () => {
+        document.body.style.cursor = 'default';
+      });
+    });
+
+    function updateDate() {
+      const now = new Date();
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' };
+      const formattedDate = now.toLocaleDateString('en-US', options);
+      document.getElementById('date').textContent = formattedDate;
+    }
+
+    setInterval(updateDate, 1000);
+    updateDate();
+  </script>
 </body>
 </html>
