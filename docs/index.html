@@ -4,140 +4,59 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Diamant Intreperter</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to right, #333, #555, #777);
-      background-size: 400% 400%;
-      animation: gradientAnimation 15s ease infinite;
-      color: #fff;
-      overflow: hidden; /* Hide scrollbars */
-    }
+   <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, #222, #333, #444);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            color: #fff;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
 
-    @keyframes gradientAnimation {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
-    }
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
 
-    .container {
-      border: 2px solid #888;
-      box-sizing: border-box;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+            50% {
+                background-position: 100% 50%;
+            }
 
-    header {
-      text-align: center;
-      padding: 20px;
-      background-color: rgba(0, 0, 0, 0.5);
-    }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
 
-    nav {
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 10px;
-      text-align: center;
-      border-bottom: 1px solid #555;
-    }
+        .border-wrap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+        }
 
-    nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: inline-block;
-    }
+        #animated-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #00bcd4;
+            animation: borderAnimation 5s linear infinite;
+            transform-origin: top left;
+            box-shadow: 0 0 10px #00bcd4;
+        }
 
-    nav ul li {
-      display: inline-block;
-      margin: 0 15px;
-      position: relative;
-    }
-
-    nav ul li a {
-      text-decoration: none;
-      color: #eee;
-      font-weight: bold;
-      font-size: 1.1em;
-      padding: 5px 10px;
-      display: block;
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
-
-    nav ul li a:hover {
-      color: #fff;
-      transform: scale(1.1);
-      text-shadow: 0 0 5px #fff;
-    }
-
-    nav ul li a::before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background-color: #fff;
-      visibility: hidden;
-      transform: scaleX(0);
-      transition: all 0.3s ease-in-out 0s;
-    }
-
-    nav ul li a:hover::before {
-      visibility: visible;
-      transform: scaleX(1);
-    }
-
-    main {
-      padding: 20px;
-      flex: 1;
-      text-align: center;
-    }
-
-    footer {
-      text-align: center;
-      padding: 10px;
-      background-color: rgba(0, 0, 0, 0.5);
-      font-size: 0.8em;
-      border-top: 1px solid #555;
-    }
-
-    #date {
-      margin-top: 10px;
-      font-style: italic;
-    }
-
-    #border-animation {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-    }
-
-    .line {
-      position: absolute;
-      background-color: #00ffff;
-      box-shadow: 0 0 10px #00ffff;
-      animation: borderAnimation 8s linear infinite;
-    }
-    .line {
-      position: absolute;
-      background: linear-gradient(to right, rgba(0, 255, 255, 0), #00ffff);
-      box-shadow: 0 0 10px #00ffff;
-      animation: borderAnimation 8s linear infinite;
-    }
-
-    @keyframes borderAnimation {
+        @keyframes borderAnimation {
             0% {
                 transform: translateX(0);
             }
@@ -157,12 +76,85 @@
             100% {
                 transform: translateX(0) translateY(0);
             }
+        }
 
-    }
 
 
-  </style>
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        nav {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav li {
+            margin: 0 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            padding: 8px 12px;
+            border-radius: 3px;
+            transition: background-color 0.3s, color 0.3s;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.4s ease;
+            z-index: 1;
+        }
+
+        nav a:hover::before {
+            transform: translateX(0);
+        }
+
+        nav a:hover {
+            color: #00bcd4;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        main {
+            text-align: center;
+        }
+
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.8em;
+            color: #ccc;
+        }
+
+        .date-display {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
 </head>
+
 <body>
   <div class="container">
     <header>
