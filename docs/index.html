@@ -215,7 +215,16 @@
 
         function updateDate() {
             const now = new Date();
-            const dateString = now.toLocaleDateString();
+            const options = {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: 'numeric',
+                second: 'numeric',
+                hour12: false
+            };
+            const dateString = now.toLocaleDateString(undefined, options);
             document.getElementById('date').textContent = dateString;
         }
 
