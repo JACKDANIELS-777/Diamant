@@ -1,243 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Diamant Intreperter</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to right, #333, #555, #777);
-      background-size: 400% 400%;
-      animation: gradientAnimation 15s ease infinite;
-      color: #fff;
-      overflow: hidden; /* Hide scrollbars */
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diamond Compilers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, #222, #444, #222);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: #ddd;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow: hidden; /* Hide scrollbars */
+        }
 
-    @keyframes gradientAnimation {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
-    }
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
 
-    .container {
-      border: 2px solid #888;
-      box-sizing: border-box;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+        .container {
+            border: 2px solid #666;
+            margin: 20px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            border-radius: 10px;
+        }
 
-    header {
-      text-align: center;
-      padding: 20px;
-      background-color: rgba(0, 0, 0, 0.5);
-    }
+        header {
+            text-align: center;
+            padding: 20px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
 
-    nav {
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 10px;
-      text-align: center;
-      border-bottom: 1px solid #555;
-    }
+        nav {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px 0;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
 
-    nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: inline-block;
-    }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
 
-    nav ul li {
-      display: inline-block;
-      margin: 0 15px;
-      position: relative;
-    }
+        nav li {
+            margin: 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
 
-    nav ul li a {
-      text-decoration: none;
-      color: #eee;
-      font-weight: bold;
-      font-size: 1.1em;
-      padding: 5px 10px;
-      display: block;
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
+        nav a {
+            text-decoration: none;
+            color: #eee;
+            font-weight: bold;
+            font-size: 1.2em;
+            padding: 5px 10px;
+            display: block;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
 
-    nav ul li a:hover {
-      color: #fff;
-      transform: scale(1.1);
-      text-shadow: 0 0 5px #fff;
-    }
+        nav a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #aaa;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
 
-    nav ul li a::before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background-color: #fff;
-      visibility: hidden;
-      transform: scaleX(0);
-      transition: all 0.3s ease-in-out 0s;
-    }
+        nav a:hover {
+            color: #fff;
+            transform: translateY(-3px);
+        }
 
-    nav ul li a:hover::before {
-      visibility: visible;
-      transform: scaleX(1);
-    }
+        nav a:hover::before {
+            transform: scaleX(1);
+        }
 
-    main {
-      padding: 20px;
-      flex: 1;
-      text-align: center;
-    }
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-align: center;
+            color: #ccc;
+        }
 
-    footer {
-      text-align: center;
-      padding: 10px;
-      background-color: rgba(0, 0, 0, 0.5);
-      font-size: 0.8em;
-      border-top: 1px solid #555;
-    }
+        footer {
+            text-align: center;
+            padding: 10px;
+            color: #888;
+            font-size: 0.9em;
+            margin-top: auto;
+        }
 
-    #date {
-      margin-top: 10px;
-      font-style: italic;
-    }
+        .marquee-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
 
-    #border-animation {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-    }
+        .marquee-line {
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: #00ffff;
+            box-shadow: 0 0 10px #00ffff;
+            border-radius: 1px;
+            animation: marquee 10s linear infinite;
+        }
 
-    .line {
-      position: absolute;
-      background-color: #00ffff;
-      box-shadow: 0 0 10px #00ffff;
-      animation: borderAnimation 8s linear infinite;
-    }
-    .line {
-      position: absolute;
-      background: linear-gradient(to right, rgba(0, 255, 255, 0), #00ffff);
-      box-shadow: 0 0 10px #00ffff;
-      animation: borderAnimation 8s linear infinite;
-    }
+        @keyframes marquee {
+            0% {
+                left: 0;
+                top: 0;
+                transform: rotate(0deg);
+            }
+            25% {
+                left: calc(100% - 50px);
+                top: 0;
+                transform: rotate(0deg);
+            }
+            50% {
+                left: calc(100% - 50px);
+                top: calc(100% - 2px);
+                transform: rotate(180deg);
+            }
+            75% {
+                left: 0;
+                top: calc(100% - 2px);
+                transform: rotate(180deg);
+            }
+            100% {
+                left: 0;
+                top: 0;
+                transform: rotate(360deg);
+            }
+        }
 
-    @keyframes borderAnimation {
-      0% {
-        left: 0;
-        top: 0;
-        width: 0;
-        height: 2px;
-      }
-      25% {
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 2px;
-      }
-      26% {
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 2px;
-      }
-      50% {
-        left: calc(100% - 2px);
-        top: 0;
-        width: 2px;
-        height: 0;
-      }
-      75% {
-        left: calc(100% - 2px);
-        top: 0;
-        width: 2px;
-        height: 100%;
-      }
-      76% {
-        left: calc(100% - 2px);
-        top: calc(100% - 2px);
-        width: 2px;
-        height: 100%;
-      }
-      100% {
-        left: 0;
-        top: calc(100% - 2px);
-        width: 0;
-        height: 2px;
-      }
-    }
+        .welcome-text {
+            text-align: center;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #eee;
+        }
 
-
-  </style>
+    </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>Welcome to Diamant intreperter</h1>
-    </header>
 
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="marquee-container">
+        <div class="marquee-line"></div>
+    </div>
 
-    <main>
-      <p>Your premier official source for the Diamant Intreperter</p>
-      <p id="welcome-msg">Welcome user as of <span id="date"></span> we are still under development.</p>
-    </main>
+    <div class="container">
+        <header>
+            <h1>Welcome to Diamond Compilers</h1>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+
+        <p>Your premier source for compiler solutions.</p>
+        <p class="welcome-text">Welcome user, as of <span id="date"></span> we are still under development.</p>
+    </div>
 
     <footer>
-      <p>MIT License</p>
+        &copy; 2024 Diamond Compilers. MIT License.
     </footer>
-  </div>
 
-  <div id="border-animation">
-    <div class="line"></div>
-  </div>
-
- <script>
+    <script>
         const navLinks = document.querySelectorAll('nav a');
 
         navLinks.forEach(link => {
             link.addEventListener('mouseover', () => {
-                const colors = ['#00bcd4', '#ff4081', '#c6ff00', '#f50057'];
+                const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
                 const randomColor = colors[Math.floor(Math.random() * colors.length)];
                 link.style.cursor = 'pointer';
-                link.style.color = randomColor;
-            });
-
-            link.addEventListener('mouseout', () => {
-                link.style.color = '#fff';
             });
         });
+
         function updateDate() {
             const now = new Date();
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' };
-            const formattedDate = now.toLocaleDateString(undefined, options);
-            document.getElementById('date').textContent = formattedDate;
+            const dateString = now.toLocaleDateString();
+            document.getElementById('date').textContent = dateString;
         }
 
         setInterval(updateDate, 1000);
         updateDate();
     </script>
+
 </body>
 </html>
