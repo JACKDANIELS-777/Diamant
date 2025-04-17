@@ -138,48 +138,26 @@
     }
 
     @keyframes borderAnimation {
-      0% {
-        left: 0;
-        top: 0;
-        width: 0;
-        height: 2px;
-      }
-      25% {
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 2px;
-      }
-      26% {
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 2px;
-      }
-      50% {
-        left: calc(100% - 2px);
-        top: 0;
-        width: 2px;
-        height: 0;
-      }
-      75% {
-        left: calc(100% - 2px);
-        top: 0;
-        width: 2px;
-        height: 100%;
-      }
-      76% {
-        left: calc(100% - 2px);
-        top: calc(100% - 2px);
-        width: 2px;
-        height: 100%;
-      }
-      100% {
-        left: 0;
-        top: calc(100% - 2px);
-        width: 0;
-        height: 2px;
-      }
+            0% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(100%);
+            }
+
+            50% {
+                transform: translateX(100%) translateY(calc(100vh - 2px));
+            }
+
+            75% {
+                transform: translateX(0) translateY(calc(100vh - 2px));
+            }
+
+            100% {
+                transform: translateX(0) translateY(0);
+            }
+
     }
 
 
