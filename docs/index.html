@@ -124,58 +124,64 @@
       pointer-events: none;
     }
 
-   .glowing-line {
-            position: absolute;
-            width: 5px;
-            height: 5px;
-            background-color: #00ff00; /* Glowing green color */
-            border-radius: 50%;
-            animation: moveLine 10s linear infinite;
-            pointer-events: none;
-            z-index: 1000; /* Ensure it's on top */
-            box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00; /* Glow effect */
-        }
+    .line {
+      position: absolute;
+      background-color: #00ffff;
+      box-shadow: 0 0 10px #00ffff;
+      animation: borderAnimation 8s linear infinite;
+    }
+    .line {
+      position: absolute;
+      background: linear-gradient(to right, rgba(0, 255, 255, 0), #00ffff);
+      box-shadow: 0 0 10px #00ffff;
+      animation: borderAnimation 8s linear infinite;
+    }
 
-        @keyframes moveLine {
-            0% {
-                left: 0;
-                top: 0;
-                transform: translate(0, 0);
-            }
-            25% {
-                left: calc(100vw - 5px);
-                top: 0;
-                transform: translate(0, 0);
-            }
-            50% {
-                left: calc(100vw - 5px);
-                top: calc(100vh - 5px);
-                transform: translate(0, 0);
-            }
-            75% {
-                left: 0;
-                top: calc(100vh - 5px);
-                transform: translate(0, 0);
-            }
-            100% {
-                left: 0;
-                top: 0;
-                transform: translate(0, 0);
-            }
-        }
+    @keyframes borderAnimation {
+      0% {
+        left: 0;
+        top: 0;
+        width: 0;
+        height: 2px;
+      }
+      25% {
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 2px;
+      }
+      26% {
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 2px;
+      }
+      50% {
+        left: calc(100% - 2px);
+        top: 0;
+        width: 2px;
+        height: 0;
+      }
+      75% {
+        left: calc(100% - 2px);
+        top: 0;
+        width: 2px;
+        height: 100%;
+      }
+      76% {
+        left: calc(100% - 2px);
+        top: calc(100% - 2px);
+        width: 2px;
+        height: 100%;
+      }
+      100% {
+        left: 0;
+        top: calc(100% - 2px);
+        width: 0;
+        height: 2px;
+      }
+    }
 
-        .fade-out {
-            animation: fadeOut 2s forwards;
-        }
-
-        @keyframes fadeOut {
-            from {
-                opacity: 1;
-            }
-            to {
-                opacity: 0;
-            }
-        }
 
   </style>
 </head>
@@ -203,64 +209,35 @@
       <p>MIT License</p>
     </footer>
   </div>
-  <div class="glowing-line"></div>
 
-  <!--<div id="border-animation">-->
+  <div id="border-animation">
     <div class="line"></div>
   </div>
 
-   <script>
-        const navLinks = document.querySelectorAll('nav ul li a');
+ <script>
+        const navLinks = document.querySelectorAll('nav a');
 
         navLinks.forEach(link => {
             link.addEventListener('mouseover', () => {
-                const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+                const colors = ['#00bcd4', '#ff4081', '#c6ff00', '#f50057'];
                 const randomColor = colors[Math.floor(Math.random() * colors.length)];
                 link.style.cursor = 'pointer';
                 link.style.color = randomColor;
             });
 
             link.addEventListener('mouseout', () => {
-                link.style.color = '#ddd';
+                link.style.color = '#fff';
             });
         });
-
-        function updateDateTime() {
+        function updateDate() {
             const now = new Date();
-            const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
-            const dateTimeString = now.toLocaleDateString(undefined, options);
-            document.getElementById('date-time').textContent = `As of ${dateTimeString}, we are still under development.`;
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' };
+            const formattedDate = now.toLocaleDateString(undefined, options);
+            document.getElementById('date').textContent = formattedDate;
         }
 
-        function updateWelcomeMessage() {
-            const userLanguage = navigator.language || navigator.userLanguage;
-            const welcomeMessage = `Welcome user`;
-            document.getElementById('welcome-message').textContent = `${welcomeMessage}`;
-        }
-
-        updateDateTime();
-        updateWelcomeMessage();
-        setInterval(updateDateTime, 1000);
-
-        // Animated Line
-        const line = document.querySelector('.glowing-line');
-        let tailLength = 50; // Length of the "tail"
-        let points = [];
-
-        function updateLinePosition() {
-            let x = parseFloat(getComputedStyle(line).left);
-            let y = parseFloat(getComputedStyle(line).top);
-
-            points.push({ x, y });
-
-            // Limit the tail length
-            if (points.length > tailLength) {
-                points.shift();
-            }
-
-            // Recreate the line using points
-            line.style.backgroundImage = `linear-gradient(to right, ${points.map((p, i) => `rgba(0,255,0,${i / tailLength}) ${p.x}px ${p.y}px`).join(',')})`;
-        }
+        setInterval(updateDate, 1000);
+        updateDate();
     </script>
 </body>
 </html>
