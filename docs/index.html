@@ -124,7 +124,58 @@
       pointer-events: none;
     }
 
-    https://jackdaniels-777.github.io/Diamant/
+   .glowing-line {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: #00ff00; /* Glowing green color */
+            border-radius: 50%;
+            animation: moveLine 10s linear infinite;
+            pointer-events: none;
+            z-index: 1000; /* Ensure it's on top */
+            box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00; /* Glow effect */
+        }
+
+        @keyframes moveLine {
+            0% {
+                left: 0;
+                top: 0;
+                transform: translate(0, 0);
+            }
+            25% {
+                left: calc(100vw - 5px);
+                top: 0;
+                transform: translate(0, 0);
+            }
+            50% {
+                left: calc(100vw - 5px);
+                top: calc(100vh - 5px);
+                transform: translate(0, 0);
+            }
+            75% {
+                left: 0;
+                top: calc(100vh - 5px);
+                transform: translate(0, 0);
+            }
+            100% {
+                left: 0;
+                top: 0;
+                transform: translate(0, 0);
+            }
+        }
+
+        .fade-out {
+            animation: fadeOut 2s forwards;
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
 
   </style>
 </head>
