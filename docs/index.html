@@ -18,6 +18,76 @@
             min-height: 100vh;
             overflow: hidden; /* Hide scrollbars */
         }
+         /* Segment Display Clock Styles */
+        #clock {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            margin-top: 20px;
+        }
+
+        .digit {
+            margin: 0 5px;
+            width: 30px;
+            height: 60px;
+            position: relative;
+        }
+
+        .segment {
+            position: absolute;
+            background-color: #222;
+            transition: background-color 0.3s;
+        }
+
+        .segment.on {
+            background-color: #f00;
+        }
+
+        .segment.horizontal {
+            width: 30px;
+            height: 5px;
+        }
+
+        .segment.vertical {
+            width: 5px;
+            height: 30px;
+        }
+
+        .top {
+            top: 0;
+            left: 0;
+        }
+
+        .middle {
+            top: 27.5px;
+            left: 0;
+        }
+
+        .bottom {
+            bottom: 0;
+            left: 0;
+        }
+
+        .left-top {
+            top: 0;
+            left: 0;
+        }
+
+        .right-top {
+            top: 0;
+            right: 0;
+        }
+
+        .left-bottom {
+            bottom: 0;
+            left: 0;
+        }
+
+        .right-bottom {
+            bottom: 0;
+            right: 0;
+
 
         @keyframes gradient {
             0% {
