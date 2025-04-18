@@ -3,124 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diamant Interpreter - About</title>
+    <title>Diamant interpreter - About</title>
     <style>
         body {
-            font-family: sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
-            color: #333;
+            background: linear-gradient(45deg, #222, #444, #222);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: #ddd;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .container {
-            max-width: 800px;
-            margin: 20px auto;
+            border: 2px solid #666;
+            margin: 20px;
             padding: 20px;
-            background-color: #fff;
-            border: 2px solid;
-            border-image: linear-gradient(to right, black, grey) 1;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            border-radius: 10px;
         }
 
-        h1 {
+        header {
             text-align: center;
+            padding: 20px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        nav {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px 0;
+            border-radius: 5px;
             margin-bottom: 20px;
         }
 
-        p {
-            line-height: 1.6;
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
         }
 
-        a {
-            color: #007bff;
+        nav li {
+            margin: 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+         nav a {
             text-decoration: none;
-            background: linear-gradient(to right, #007bff, #00bfff);
+            color: #eee;
+            font-weight: bold;
+            font-size: 1.2em;
+            padding: 5px 10px;
+            display: block;
+            background: linear-gradient(to right, #333, #555);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            transition: color 0.3s ease;
+            transition: transform 0.3s ease;
+            position: relative;
         }
 
-        a:hover {
-            opacity: 0.7;
+        nav a:hover {
+            transform: translateY(-3px);
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, #333, #555);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        nav a:hover::before {
+            transform: scaleX(1);
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #ccc;
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            color: #888;
+            font-size: 0.9em;
+            margin-top: auto;
+        }
+
+        .about-section {
+            padding: 20px;
+            border: 1px solid #555;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .github-info {
+            padding: 20px;
+            border: 1px solid #555;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: left;
         }
 
         /* Responsive Design */
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav li {
+                margin: 10px 0;
+            }
+
             .container {
                 margin: 10px;
                 padding: 10px;
             }
-            h1 {
-                font-size: 24px;
-            }
-        }
-
-        /* Cool JS things*/
-        .cool-thing{
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #f9f9f9;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>About Diamant Interpreter</h1>
-        <p>Diamant is a powerful interpreter designed for "still in early development". It provides a robust and efficient environment for executing Diamant code.</p>
+        <header>
+            <h1>About Diamant interpreter</h1>
+        </header>
 
-        <h2>More Details</h2>
-        <p>For more detailed information, visit the Diamant GitHub repository: <a href="https://jackdaniels-777.github.io/Diamant/" id="github-link">Diamant GitHub Repository</a>.</p>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
 
-        <h3>About the GitHub Repository</h3>
-        <p>The <a href="https://jackdaniels-777.github.io/Diamant/" id="github-description-link">GitHub repository</a> contains the complete source code for the Diamant interpreter, along with documentation, examples, and contribution guidelines. It's a great resource for developers interested in understanding the inner workings of Diamant or contributing to its development.  You can find installation instructions, usage examples, and a roadmap of future features on the GitHub page.</p>
+        <section class="about-section">
+            <h2>About the Diamant Interpreter</h2>
+            <p>The Diamant interpreter is a tool designed to...</p>
+            <p>More details can be found at: <a href="https://jackdaniels-777.github.io/Diamant/" id="githubLink">Diamant on GitHub</a></p>
+        </section>
 
-        <div class="cool-thing">
-            <h3>Interactive Code Editor</h3>
-            <p>To be Added</p>
-        </div>
+        <section class="github-info">
+            <h2>Diamant interpreter GitHub Information</h2>
+            <p>The <a href="https://jackdaniels-777.github.io/Diamant/" id="githubLink2">Diamant GitHub repository</a> hosts the source code, documentation, and issue tracker for the Diamant interpreter.</p>
+            <p>The repository provides a platform for collaboration and contribution, allowing developers to contribute to the project's development.</p>
+            <p>You can explore the code, report bugs, suggest new features, and even contribute code improvements to the Diamant interpreter through the GitHub repository.</p>
+            <p>It contains resources and contributions from people.</p>
+        </section>
 
-        <div class="cool-thing">
-            <h3>Visual Code Debugger</h3>
-            <p>To be Added</p>
-        </div>
-
-        <div class="cool-thing">
-            <h3>Customizable Themes</h3>
-            <p>To be Added</p>
-        </div>
     </div>
 
-    <script>
-        // Cool JS to add dynamic effects
+    <footer>
+        &copy; 2024 Diamond Compilers. MIT License.
+    </footer>
 
-        // Make links cooler with JS and linear gradients
+    <script>
         const links = document.querySelectorAll('a');
+
         links.forEach(link => {
-            link.addEventListener('mouseover', () => {
-                link.style.transition = 'all 0.3s ease';
-                link.style.transform = 'scale(1.1)';
+            link.addEventListener('mouseover', function() {
+                this.style.transform = 'scale(1.1)';
             });
-            link.addEventListener('mouseout', () => {
-                link.style.transform = 'scale(1)';
+
+            link.addEventListener('mouseout', function() {
+                this.style.transform = 'scale(1)';
             });
         });
-
-        // Gradient Border Animation
-        const container = document.querySelector('.container');
-        let angle = 0;
-
-        function animateBorder() {
-            angle++;
-            container.style.borderImage = `linear-gradient(${angle}deg, black, grey) 1`;
-            requestAnimationFrame(animateBorder);
-        }
-
-        animateBorder();
-
     </script>
 </body>
 </html>
