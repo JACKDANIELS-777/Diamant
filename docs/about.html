@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diamant Interpreter - About</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 2px solid;
+            border-image: linear-gradient(to right, black, grey) 1;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            background: linear-gradient(to right, #007bff, #00bfff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            opacity: 0.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                margin: 10px;
+                padding: 10px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+        }
+
+        /* Cool JS things*/
+        .cool-thing{
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>About Diamant Interpreter</h1>
+        <p>Diamant is a powerful interpreter designed for "still in early development". It provides a robust and efficient environment for executing Diamant code.</p>
+
+        <h2>More Details</h2>
+        <p>For more detailed information, visit the Diamant GitHub repository: <a href="https://jackdaniels-777.github.io/Diamant/" id="github-link">Diamant GitHub Repository</a>.</p>
+
+        <h3>About the GitHub Repository</h3>
+        <p>The <a href="https://jackdaniels-777.github.io/Diamant/" id="github-description-link">GitHub repository</a> contains the complete source code for the Diamant interpreter, along with documentation, examples, and contribution guidelines. It's a great resource for developers interested in understanding the inner workings of Diamant or contributing to its development.  You can find installation instructions, usage examples, and a roadmap of future features on the GitHub page.</p>
+
+        <div class="cool-thing">
+            <h3>Interactive Code Editor</h3>
+            <p>To be Added</p>
+        </div>
+
+        <div class="cool-thing">
+            <h3>Visual Code Debugger</h3>
+            <p>To be Added</p>
+        </div>
+
+        <div class="cool-thing">
+            <h3>Customizable Themes</h3>
+            <p>To be Added</p>
+        </div>
+    </div>
+
+    <script>
+        // Cool JS to add dynamic effects
+
+        // Make links cooler with JS and linear gradients
+        const links = document.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('mouseover', () => {
+                link.style.transition = 'all 0.3s ease';
+                link.style.transform = 'scale(1.1)';
+            });
+            link.addEventListener('mouseout', () => {
+                link.style.transform = 'scale(1)';
+            });
+        });
+
+        // Gradient Border Animation
+        const container = document.querySelector('.container');
+        let angle = 0;
+
+        function animateBorder() {
+            angle++;
+            container.style.borderImage = `linear-gradient(${angle}deg, black, grey) 1`;
+            requestAnimationFrame(animateBorder);
+        }
+
+        animateBorder();
+
+    </script>
+</body>
+</html>
