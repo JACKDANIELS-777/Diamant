@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OverLoading</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      padding: 20px;
+    }
+    h1 {
+      color: #00ffff;
+    }
+    ul {
+      list-style-type: square;
+    }
+    code {
+      background-color: #1e1e1e;
+      padding: 5px;
+      border-radius: 4px;
+      display: block;
+      margin: 10px 0;
+      color: #00ff88;
+    }
+    section {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Overloading in Diamant</h1>
+
+  <ul>
+    <li><strong>Function Overloading</strong> — Define multiple functions with the same name but different parameters.</li>
+    <li><strong>Operator Overloading</strong> — Use <code>INFIX</code> to define custom operators like <code>"add"</code> or <code>"combine"</code>.</li>
+  </ul>
+
+  <section>
+    <h2>Example: Function Overloading</h2>
+    <code>
+fun greet() -> { print("Hello!") };<br>
+fun greet(name) -> { print("Hello, ", name) };<br>
+greet();<br>
+greet("Alice");
+    </code>
+  </section>
+
+  <section>
+    <h2>Example: Infix Operator Overloading</h2>
+    <code>
+INFIX "sum"(a, b) => { ret a + b };<br>
+print(10 "sum" 5);  # prints 15
+    </code>
+  </section>
+
+</body>
+</html>
