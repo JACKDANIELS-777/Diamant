@@ -2,221 +2,188 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tutorial WebPage</title>
+    <title>Diamant Language Tutorial</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #222, #444, #222);
+            color: #ddd;
             margin: 0;
             padding: 0;
-            background: linear-gradient(45deg, #222, #444, #222);
             background-size: 400% 400%;
             animation: gradient 15s ease infinite;
-            color: #ddd;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            overflow: hidden; /* Hide scrollbars */
         }
-
         @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-
         .container {
-            border: 2px solid #666;
-            margin: 20px;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            border-radius: 10px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
         }
-
-        header {
-            text-align: center;
-            padding: 20px;
-            color: #fff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        h1, h2 {
+            color: #00ffff;
         }
-
-        nav {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 10px 0;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-        }
-
-        nav li {
-            margin: 0 20px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #eee;
-            font-weight: bold;
-            font-size: 1.2em;
-            padding: 5px 10px;
-            display: block;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        nav a::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: #aaa;
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-
-        nav a:hover {
-            color: #fff;
-            transform: translateY(-3px);
-        }
-
-        nav a:hover::before {
-            transform: scaleX(1);
-        }
-
-        section {
-            margin-bottom: 20px;
-            padding: 15px;
-            border: 1px solid #555;
-            border-radius: 5px;
-        }
-
-        section h2 {
-            color: #fff;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        p {
-            font-size: 1.1em;
-            line-height: 1.6;
-            margin-bottom: 15px;
-            color: #ccc;
-        }
-
-        footer {
-            text-align: center;
+        code, pre {
+            background: #111;
+            color: #0f0;
             padding: 10px;
-            color: #888;
-            font-size: 0.9em;
-            margin-top: auto;
+            display: block;
+            border-radius: 5px;
+            overflow-x: auto;
         }
-
-        .marquee-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
+        section {
+            margin-bottom: 40px;
         }
-
-        .marquee-line {
-            position: absolute;
-            width: 50px;
-            height: 2px;
-            background-color: #00ffff;
-            box-shadow: 0 0 10px #00ffff;
-            border-radius: 1px;
-            animation: marquee 10s linear infinite;
-        }
-
-        @keyframes marquee {
-            0% {
-                left: 0;
-                top: 0;
-                transform: rotate(0deg);
-            }
-            25% {
-                left: calc(100% - 50px);
-                top: 0;
-                transform: rotate(0deg);
-            }
-            50% {
-                left: calc(100% - 50px);
-                top: calc(100% - 2px);
-                transform: rotate(180deg);
-            }
-            75% {
-                left: 0;
-                top: calc(100% - 2px);
-                transform: rotate(180deg);
-            }
-            100% {
-                left: 0;
-                top: 0;
-                transform: rotate(360deg);
-            }
+        .highlight {
+            color: #0ff;
         }
     </style>
 </head>
 <body>
-
-    <div class="marquee-container">
-        <div class="marquee-line"></div>
-    </div>
-
     <div class="container">
-        <header>
-            <h1>Tutorial WebPage</h1>
-        </header>
+        <h1>🚀 Diamant Language - Feature Showcase</h1>
 
-        <nav>
+        <section>
+            <h2>🔹 Overview</h2>
+            <p>Diamant is a custom programming language designed to combine the simplicity of Python with the power and control of systems languages like C. It features:</p>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Tutorial 1</a></li>
-                <li><a href="#">Tutorial 2</a></li>
-                <li><a href="#">Contact</a></li>
+                <li>Optional strong typing</li>
+                <li>Memory tracking for variables</li>
+                <li>Python interoperability</li>
+                <li>Function overloading</li>
+                <li>Custom infix operators</li>
+                <li>Control over execution with blocks like <code>TIME</code>, <code>WATCH</code>, <code>DEFER</code>, and <code>ONCE</code></li>
             </ul>
-        </nav>
-
-        <section>
-            <h2>Section 1: Introduction</h2>
-            <p>This is the introduction to the tutorial.  We will cover the basics.</p>
         </section>
 
         <section>
-            <h2>Section 2: Getting Started</h2>
-            <p>Learn how to get started with this thing.</p>
+            <h2>✅ Type Declarations & Casting</h2>
+            <pre>INT a = 10;
+FLOAT b = (FLOAT) a;
+BOOL c = (BOOL) 5;</pre>
+            <p>Strong typing can be enforced with keywords like <code>INT</code>, <code>FLOAT</code>, <code>STRING</code>. Casts are done using C-style syntax.</p>
         </section>
 
         <section>
-            <h2>Section 3: Advanced Topics</h2>
-            <p>Digging deeper into advance topics.</p>
+            <h2>📦 Memory Tracking (MEM)</h2>
+            <pre>MEM x = 5;
+x = 10;
+x = 20;
+print(x@0); // 5
+print(x@1); // 10
+print(x@2); // 20
+</pre>
+            <p><code>MEM</code> enables history tracking of a variable. You can query the past values with <code>x@index</code>.</p>
         </section>
+
+        <section>
+            <h2>🔁 Looping Features</h2>
+            <pre>for i in [1..5] {
+    print(i)
+}
+
+while x < 10 {
+    x += 1
+}
+
+for i,v in [1,2,3] {
+    print(i,v)
+}
+</pre>
+        </section>
+
+        <section>
+            <h2>🕒 TIME Block</h2>
+            <pre>TIME t {
+    for i in [1..100000] {
+        a = i
+    }
+}
+print(t);</pre>
+            <p>Measures how long a block of code takes to run.</p>
+        </section>
+
+        <section>
+            <h2>🧵 DEFER Block</h2>
+            <pre>fun myFunc() -> {
+    DEFER { print("Done!") },
+    print("Running...")
+};
+myFunc();</pre>
+            <p><code>DEFER</code> ensures cleanup or final steps after a function completes.</p>
+        </section>
+
+        <section>
+            <h2>🕹️ ONCE Block</h2>
+            <pre>fun init() -> {
+    ONCE { print("This only runs once") }
+};</pre>
+        </section>
+
+        <section>
+            <h2>👀 WATCH Block</h2>
+            <pre>MEM a = 0;
+WATCH a {
+    print("a changed to", a)
+};
+a = 1;
+a = 2;</pre>
+            <p>Watch a variable and execute logic when it changes.</p>
+        </section>
+
+        <section>
+            <h2>🧠 Function Overloading</h2>
+            <pre>fun greet() -> { print("Hi") };
+fun greet(name) -> { print("Hello", name) };
+greet();
+greet("Alice");</pre>
+        </section>
+
+        <section>
+            <h2>🔧 Custom Infix Operators</h2>
+            <pre>INFIX "sum"(a, b) => {
+    ret a + b + 10
+};
+
+a = 1; b = 2;
+print(a "sum" b); // prints 13
+</pre>
+            <p>Powerful user-defined infix operators using strings like <code>"sum"</code>.</p>
+        </section>
+
+        <section>
+            <h2>📦 Python Integration</h2>
+            <pre>import "math";
+print($math_sqrt(49)); // 7.0</pre>
+            <p>Use Python libraries seamlessly from Diamant.</p>
+        </section>
+
+        <section>
+            <h2>🎯 Match Case (Switch)</h2>
+            <pre>match x {
+    1 => print("One"),
+    2 => print("Two"),
+    else => print("Other")
+}</pre>
+        </section>
+
+        <section>
+            <h2>🌈 Additional Features</h2>
+            <ul>
+                <li>Tuples with history tracking</li>
+                <li>List/Dict/Set unpacking</li>
+                <li>List comprehensions: <code>[i*2 for i in [1..10]]</code></li>
+                <li>With-environments: temporary variable scopes</li>
+                <li>Lazy evaluation (planned)</li>
+            </ul>
+        </section>
+
+        <footer>
+            <p style="text-align:center; padding:20px;">&copy; 2025 Diamant Language</p>
+        </footer>
     </div>
-
-    <footer>
-        &copy; 2024 Tutorial Website
-    </footer>
-
 </body>
 </html>
