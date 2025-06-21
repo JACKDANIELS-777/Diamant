@@ -72,9 +72,9 @@ BOOL c = (BOOL) 5;</pre>
             <pre>MEM x = 5;
 x = 10;
 x = 20;
-print(x@0); // 5
+print(x@0); // 20
 print(x@1); // 10
-print(x@2); // 20
+print(x@2); // 5
 </pre>
             <p><code>MEM</code> enables history tracking of a variable. You can query the past values with <code>x@index</code>.</p>
         </section>
@@ -83,15 +83,15 @@ print(x@2); // 20
             <h2>🔁 Looping Features</h2>
             <pre>for i in [1..5] {
     print(i)
-}
+};
 
 while x < 10 {
     x += 1
-}
+};
 
 for i,v in [1,2,3] {
     print(i,v)
-}
+};
 </pre>
         </section>
 
@@ -101,7 +101,7 @@ for i,v in [1,2,3] {
     for i in [1..100000] {
         a = i
     }
-}
+};
 print(t);</pre>
             <p>Measures how long a block of code takes to run.</p>
         </section>
