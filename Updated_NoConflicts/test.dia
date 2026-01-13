@@ -1,0 +1,25 @@
+C->{"""
+#include <stdio.h>
+#include <stdlib.h>
+
+int* hello(int c){
+    int *a = malloc(sizeof(int))\s
+    *a=c\s
+    return a\s
+
+}
+int get(int* a){
+    return *a\s
+}
+
+void Free(int* a){
+    free(a)\s
+}
+"""
+};
+
+a = $_C_hello(9);
+b= $_C_get(a);
+import "test";
+$test_Print(b);
+$_C_Free(a);
