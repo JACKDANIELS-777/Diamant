@@ -6,7 +6,40 @@ most languages: variables that remember their history, blocks that react when a 
 operators, and calling straight into C or Python code.
 
 Keywords can be written in **English or Afrikaans**.
+## One program, three languages
 
+This is [`Updated_NoConflicts/test.dia`](Updated_NoConflicts/test.dia): C allocates and frees memory, Python
+prints, and Diamant ties them together.
+
+```
+C->{"""
+#include <stdio.h>
+#include <stdlib.h>
+
+int* hello(int c){
+    int *a = malloc(sizeof(int))\s
+    *a=c\s
+    return a\s
+}
+int get(int* a){
+    return *a\s
+}
+void Free(int* a){
+    free(a)\s
+}
+"""};
+
+a = $_C_hello(9);     # C: malloc an int and store 9 in it
+b = $_C_get(a);       # C: read it back through the pointer
+import "test";        # load test.py
+$test_Print(b);       # Python: prints 9
+$_C_Free(a);          # C: free the memory
+```
+
+```
+> python old3.py test.dia
+9
+```
 ```
 MEM x = 5;
 x = 10;
